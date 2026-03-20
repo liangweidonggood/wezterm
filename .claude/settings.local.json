@@ -4,9 +4,9 @@
     "allow": [
       "Bash(git add *)",
       "Bash(git commit *)",
-      "Bash(lua *)",
+      "Bash(lua*)",
       "Bash(ls*)",
-      "Bash(gh *)",
+      "Bash(gh*)",
       "WebFetch"
     ]
   }

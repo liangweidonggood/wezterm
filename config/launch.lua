@@ -9,9 +9,9 @@ local options = {
 
 -- Windows 平台配置
 if platform.is_win then
-   -- 默认启动 WSL: kali-linux (root 用户，zsh shell)
-   options.default_domain = 'wsl:kali-linux'
-   options.default_prog = { 'zsh', '-l' }
+   -- 默认启动 PowerShell Desktop
+   -- options.default_domain = 'wsl:kali-linux'
+   options.default_prog = { 'pwsh', '-NoLogo' }
    options.launch_menu = {
       { label = 'PowerShell Core', args = { 'pwsh', '-NoLogo' } },  -- PowerShell Core
       { label = 'PowerShell Desktop', args = { 'powershell' } },    -- PowerShell 桌面版
