@@ -9,6 +9,7 @@
 - ⌨️ **自定义快捷键** - 完整的vim风格按键绑定
 - 🌍 **跨平台支持** - 自动适配 macOS / Windows / Linux 不同平台
 - ✨ **GPU加速** - 启用GPU渲染，流畅丝滑
+- 🐧 **默认WSL** - Windows 下默认直接启动 WSL: kali-linux (root/zsh)
 
 ## 致谢
 

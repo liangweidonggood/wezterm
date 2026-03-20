@@ -43,6 +43,13 @@ if platform.is_win then
          default_cwd = '/home/kevin', -- 默认工作目录
          default_prog = { 'bash', '-l' }, -- 默认使用 bash shell
       },
+      {
+         name = 'wsl:kali-linux', -- 连接名称
+         distribution = 'kali-linux',  -- WSL 分发版名称
+         username = 'root',       -- 用户名
+         default_cwd = '/root', -- 默认工作目录
+         default_prog = { 'zsh', '-l' }, -- 默认使用 zsh shell
+      },
    }
 end
 

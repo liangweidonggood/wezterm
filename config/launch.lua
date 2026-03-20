@@ -9,7 +9,9 @@ local options = {
 
 -- Windows 平台配置
 if platform.is_win then
-   options.default_prog = { 'pwsh', '-NoLogo' }  -- 默认使用 PowerShell Core
+   -- 默认启动 WSL: kali-linux (root 用户，zsh shell)
+   options.default_domain = 'wsl:kali-linux'
+   options.default_prog = { 'zsh', '-l' }
    options.launch_menu = {
       { label = 'PowerShell Core', args = { 'pwsh', '-NoLogo' } },  -- PowerShell Core
       { label = 'PowerShell Desktop', args = { 'powershell' } },    -- PowerShell 桌面版
@@ -18,7 +20,11 @@ if platform.is_win then
       { label = 'Msys2', args = { 'ucrt64.cmd' } },                -- Msys2 环境
       {
          label = 'Git Bash',
-         args = { 'C:\\Users\\kevin\\scoop\\apps\\git\\current\\bin\\bash.exe' },  -- Git Bash
+         args = { 'D:\\soft\\dev\\Git\\bin\\bash.exe' },  -- Git Bash
+      },
+      {
+         label = 'WSL: Kali Linux (zsh)',
+         domain = { DomainName = 'wsl:kali-linux' },
       },
    }
 -- macOS 平台配置
