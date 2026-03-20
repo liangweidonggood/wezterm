@@ -59,6 +59,10 @@ local keys = {
    -- 复制/粘贴 --
    { key = 'c',          mods = 'CTRL|SHIFT',  action = act.CopyTo('Clipboard') }, -- 复制到剪贴板
    { key = 'v',          mods = 'CTRL|SHIFT',  action = act.PasteFrom('Clipboard') }, -- 从剪贴板粘贴
+   { key = 'Insert',     mods = 'SHIFT',       action = act.PasteFrom('Clipboard') }, -- Shift+Insert 从剪贴板粘贴
+
+   -- 输入特殊处理 --
+   { key = 'Enter',      mods = 'SHIFT',       action = act.SendString('\n') }, -- Shift+Enter 插入换行
 
    -- 标签页 --
    -- 标签页: 新建和关闭
