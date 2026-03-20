@@ -1,20 +1,13 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "permissions": {
     "allow": [
-      "Bash(luac -p colors/custom.lua)",
-      "Bash(luac -p config/init.lua)",
-      "Bash(luac -p wezterm.lua)",
-      "Bash(git:*)",
-      "Bash(luac -p config/general.lua)",
-      "Bash(lua -v)",
-      "Bash(luacheck config/appearance.lua)",
-      "Bash(lua:*)",
-      "Bash(luac -p config/appearance.lua)",
-      "Bash(luacheck:*)",
-      "Bash(wezterm check-config:*)",
-      "Bash(stylua:*)",
-      "Bash(git restore:*)",
-      "Bash(luac:*)"
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(lua *)",
+      "Bash(ls*)",
+      "Bash(gh *)",
+      "WebFetch"
     ]
   }
 }
