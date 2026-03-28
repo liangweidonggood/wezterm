@@ -256,6 +256,12 @@ local mouse_bindings = {
       mods = 'CTRL',
       action = act.OpenLinkAtMouseCursor,
    },
+   -- 右键粘贴（替换中键粘贴）
+   {
+      event = { Up = { streak = 1, button = 'Right' } },
+      mods = 'NONE',
+      action = act.PasteFrom('Clipboard'),
+   },
 }
 
 return {
