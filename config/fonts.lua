@@ -22,6 +22,9 @@ return {
    -- 字体大小
    font_size = font_size,
 
+   -- 不警告缺失字形
+   warn_about_missing_glyphs = false,
+
    -- FreeType 渲染配置参考：https://wezfurlong.org/wezterm/config/lua/config/freetype_pcf_long_family_names.html#why-doesnt-wezterm-use-the-distro-freetype-or-match-its-configuration
    -- FreeType 加载目标类型：Normal/Light/Mono/HorizontalLcd
    freetype_load_target = 'Normal', ---@type 'Normal'|'Light'|'Mono'|'HorizontalLcd'
