@@ -30,7 +30,7 @@ local keys = {
    },
    { key = 'F11', mods = 'NONE',    action = act.ToggleFullScreen },          -- 切换全屏模式
    { key = 'F12', mods = 'NONE',    action = act.ShowDebugOverlay },          -- 显示调试叠加层
-   { key = 'f',   mods = mod.SUPER, action = act.Search({ CaseInSensitiveString = '' }) }, -- 打开搜索栏
+   { key = 'f',   mods = 'CTRL|SHIFT', action = act.Search({ CaseInSensitiveString = '' }) }, -- 打开搜索栏
    {
       key = 'u',
       mods = mod.SUPER_REV,
@@ -163,10 +163,10 @@ local keys = {
    },
    {
       key = 'b',
-      mods = mod.SUPER,
+      mods = mod.SUPER_REV,
       action = wezterm.action_callback(function(window, _pane)
          backdrops:toggle_focus(window)
-      end) -- 切换背景焦点效果
+      end) -- 切换背景焦点效果 (Ctrl+Alt+B)
    },
 
    -- 窗格 --
@@ -199,7 +199,7 @@ local keys = {
 
    -- 窗格: 滚动内容
    { key = 'u',        mods = mod.SUPER, action = act.ScrollByLine(-5) }, -- 向上滚动5行
-   { key = 'd',        mods = mod.SUPER, action = act.ScrollByLine(5) }, -- 向下滚动5行
+   { key = 'd',        mods = mod.SUPER_REV, action = act.ScrollByLine(5) }, -- 向下滚动5行 (Ctrl+Alt+D)
    { key = 'PageUp',   mods = 'NONE',    action = act.ScrollByPage(-0.75) }, -- 向上翻页
    { key = 'PageDown', mods = 'NONE',    action = act.ScrollByPage(0.75) }, -- 向下翻页
 
@@ -207,12 +207,12 @@ local keys = {
    -- 调整字体大小
    {
       key = 'f',
-      mods = 'LEADER',
+      mods = mod.SUPER_REV,
       action = act.ActivateKeyTable({
          name = 'resize_font',
          one_shot = false,
          timeout_milliseconds = 1000,
-      }), -- 进入字体大小调整模式
+      }), -- 进入字体大小调整模式 (Ctrl+Alt+F)
    },
    -- 调整窗格大小
    {
