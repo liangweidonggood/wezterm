@@ -14,10 +14,11 @@ local font_size = platform.is_mac and 12 or 14
 
 -- 返回字体配置表
 return {
-   -- 字体配置：设置字体家族和字重
-   font = wezterm.font({
-      family = font_family,
-      weight = 'Medium',
+   -- 字体配置：设置字体家族和字重 + fallback 字体链
+   -- JetBrainsMono Nerd Font 优先，Noto Sans Bamum 覆盖 U+16800 扩展平面
+   font = wezterm.font_with_fallback({
+      { family = font_family, weight = 'Medium' },
+      'Noto Sans Bamum',
    }),
    -- 字体大小
    font_size = font_size,

@@ -23,6 +23,12 @@ luac -p wezterm.lua
 luac -p config/*.lua
 ```
 
+## WezTerm 字体问题排查
+
+- `wezterm ls-fonts --text <字符>` - 诊断单个字符用哪个字体渲染，`.notdef` 表示字形缺失
+- 扩展 Unicode（如 U+16830 Bamum 平面）需在 `wezterm.font_with_fallback()` 中添加对应 fallback 字体（如 Noto Sans Bamum）
+- `ls-fonts` 读取运行时配置，修改字体配置后需重启 WezTerm 才能验证
+
 ## 提交
 
 保持提交信息清晰，中文描述修改内容。
