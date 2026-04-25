@@ -13,6 +13,10 @@ math.random()
 -- 支持的图片文件格式
 local GLOB_PATTERN = '*.{jpg,jpeg,png,gif,bmp,ico,tiff,pnm,dds,tga}'
 
+-- 背景自动切换计时器
+local SWITCH_INTERVAL = 15 -- 秒
+local last_switch_time = 0
+
 ---@class BackDrops
 ---@field current_idx number 当前图片索引
 ---@field images string[] 背景图片路径数组
@@ -124,7 +128,6 @@ end
 function BackDrops:_set_opt(window, background_opts)
    window:set_config_overrides({
       background = background_opts,
-      enable_tab_bar = window:effective_config().enable_tab_bar,  -- 保持标签栏状态不变
    })
 end
 
@@ -143,7 +146,6 @@ function BackDrops:_set_focus_opt(window)
             opacity = 1,
          },
       },
-      enable_tab_bar = window:effective_config().enable_tab_bar,
    }
    window:set_config_overrides(opts)
 end
@@ -166,6 +168,10 @@ end
 --- 传入Window对象可实时更新当前窗口的背景
 ---@param window any? WezTerm窗口对象（可选）
 function BackDrops:random(window)
+   if #self.images == 0 then  -- 无图片时直接返回
+      wezterm.log_warn('[backdrops] no images found in ' .. self.images_dir)
+      return
+   end
    self.current_idx = math.random(#self.images)  -- 生成随机索引
 
    if window ~= nil then  -- 如果提供了窗口对象，则更新背景
@@ -176,6 +182,10 @@ end
 --- 循环切换到下一张背景图片
 ---@param window any WezTerm窗口对象
 function BackDrops:cycle_forward(window)
+   if #self.images == 0 then  -- 无图片时直接返回
+      wezterm.log_warn('[backdrops] no images, skipping cycle_forward')
+      return
+   end
    if self.current_idx == #self.images then  -- 最后一张后回到第一张
       self.current_idx = 1
    else
@@ -222,6 +232,16 @@ function BackDrops:toggle_focus(window)
    end
 
    self:_set_opt(window, background_opts)  -- 应用配置
+end
+
+--- 每秒 tick 检查是否该切换背景（供 update-right-status 等事件调用）
+---@param window any WezTerm窗口对象
+function BackDrops:tick(window)
+   local now = os.time()
+   if now - last_switch_time >= SWITCH_INTERVAL then
+      last_switch_time = now
+      self:cycle_forward(window)
+   end
 end
 
 -- 导出单例实例

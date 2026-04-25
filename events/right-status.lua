@@ -6,6 +6,8 @@ local umath = require('utils.math')
 local Cells = require('utils.cells')
 -- 导入选项验证工具
 local OptsValidator = require('utils.opts-validator')
+-- 导入背景切换模块
+local backdrops = require('utils.backdrops')
 
 ---@alias Event.RightStatusOptions { date_format?: string }
 -- 右侧状态栏配置选项类型定义
@@ -141,6 +143,9 @@ M.setup = function(opts)
             cells:render({ 'date_icon', 'date_text', 'separator', 'battery_icon', 'battery_text' })
          )
       )
+
+      -- 背景自动切换（计时逻辑封装在 backdrops 模块）
+      backdrops:tick(window)
    end)
 end
 

@@ -2,6 +2,7 @@
 -- 在 Wezterm GUI 启动时执行自定义操作
 local wezterm = require('wezterm')
 local mux = wezterm.mux
+local backdrops = require('utils.backdrops')
 
 local M = {}
 
@@ -13,6 +14,14 @@ M.setup = function()
       local _, _, window = mux.spawn_window(cmd or {})
       -- 将窗口最大化
       window:gui_window():maximize()
+
+      -- 启动时随机选择背景图片并应用到窗口
+      local ok, err = pcall(function()
+         backdrops:random(window)
+      end)
+      if not ok then
+         wezterm.log_error('[gui-startup] backdrops:random failed: ' .. tostring(err))
+      end
    end)
 end
 
