@@ -14,7 +14,7 @@ math.random()
 local GLOB_PATTERN = '*.{jpg,jpeg,png,gif,bmp,ico,tiff,pnm,dds,tga}'
 
 -- 背景自动切换计时器
-local SWITCH_INTERVAL = 60 -- 秒
+local SWITCH_INTERVAL = 300 -- 5分钟（300秒）
 local last_switch_time = 0
 
 ---@class BackDrops
