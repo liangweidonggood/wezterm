@@ -38,10 +38,9 @@ elseif platform.is_mac then
    }
 -- Linux 平台配置
 elseif platform.is_linux then
-   options.default_prog = { 'fish', '-l' }  -- 默认使用 Fish shell
+   options.default_prog = { 'zsh', '-l' }  -- 默认使用 Zsh shell
    options.launch_menu = {
       { label = 'Bash', args = { 'bash', '-l' } },    -- Bash shell
-      { label = 'Fish', args = { 'fish', '-l' } },    -- Fish shell
       { label = 'Zsh', args = { 'zsh', '-l' } },      -- Zsh shell
    }
 end
