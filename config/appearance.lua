@@ -8,9 +8,9 @@ return {
    max_fps = 120,  -- 最大帧率
    front_end = 'WebGpu', ---@type 'WebGpu' | 'OpenGL' | 'Software'  -- 前端渲染引擎
    webgpu_power_preference = 'HighPerformance',  -- WebGPU电源偏好设置
-   webgpu_preferred_adapter = gpu_adapters:pick_best(),  -- 自动选择最佳GPU适配器
+   -- webgpu_preferred_adapter = gpu_adapters:pick_best(),  -- 自动选择最佳GPU适配器
    -- webgpu_preferred_adapter = gpu_adapters:pick_manual('Dx12', 'IntegratedGpu'),  -- 手动选择集成GPU
-   -- webgpu_preferred_adapter = gpu_adapters:pick_manual('Gl', 'Other'),  -- 手动选择其他GPU
+   webgpu_preferred_adapter = gpu_adapters:pick_manual('Gl', 'Other'),  -- VMware 虚拟GPU Vulkan支持不完整，强制使用 OpenGL
    underline_thickness = '1.5pt',  -- 下划线厚度
 
    -- 光标配置
